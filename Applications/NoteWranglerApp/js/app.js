@@ -1,1 +1,1 @@
-angular.module('NoteWrangler',['ngRoute']);
+angular.module('noteWrangler',['ngRoute']);
