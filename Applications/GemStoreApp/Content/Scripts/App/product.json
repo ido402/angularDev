@@ -1,0 +1,77 @@
+[
+    {
+        "name": "Alunite",
+        "price": 2.95,
+        "description": "Alunite is a hydrated aluminium potassium sulfate mineral",
+        "canBuy": true,
+        "soldOut":false,
+        "image":"Content/img/ror_gem.png",
+        "reviews":[
+            {
+             "starts":5,
+             "body":"this is the first review",
+             "author":"admin1@gmail.com"
+            },
+            {
+             "starts":4,
+             "body":"this is the second review",
+             "author":"admin2@gmail.com"
+            },
+            {
+             "starts":3,
+             "body":"this is the third review",
+             "author":"admin3@gmail.com"
+            }
+            ]
+    },
+    {
+        "name": "Bronzite",
+        "price": 4.5,
+        "description": "Bronzite is a member of the pyroxene group of minerals",
+        "canBuy": true,
+        "soldOut":false,
+        "image":"Content/img/ror_gem.png",
+        "reviews":[
+            {
+             "starts":5,
+             "body":"this is the first review",
+             "author":"admin1@gmail.com"
+            },
+            {
+             "starts":4,
+             "body":"this is the second review",
+             "author":"admin2@gmail.com"
+            },
+            {
+             "starts":3,
+             "body":"this is the third review",
+             "author":"admin3@gmail.com"
+            }
+            ]
+    },
+    {
+        "name": "Calcite",
+        "price": 6.67,
+        "description": "Calcite is a carbonate mineral and the most stable polymorph of calcium carbonate",
+        "canBuy": true,
+        "soldOut":false,
+        "image":"Content/img/ror_gem.png",
+        "reviews":[
+            {
+             "starts":5,
+             "body":"this is the first review",
+             "author":"admin1@gmail.com"
+            },
+            {
+             "starts":4,
+             "body":"this is the second review",
+             "author":"admin2@gmail.com"
+            },
+            {
+             "starts":3,
+             "body":"this is the third review",
+             "author":"admin3@gmail.com"
+            }
+        ]
+    }
+]
