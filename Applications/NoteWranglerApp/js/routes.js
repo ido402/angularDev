@@ -5,6 +5,11 @@ angular.module('noteWrangler').config(function($routeProvider){
         controller: 'NotesIndexController',
         controllerAs: 'indexController'
     })
+    .when('/notes/:id',{
+        templateUrl: 'templates/pages/notes/show.html',
+        controller: 'NotesShowController',
+        controllerAs: 'showController'
+    })
     .when ('/users',{
         templateUrl: 'templates/pages/users/index.html', 
     })

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html ng-app="noteWrangler">
 <head>
-    <title>NoteWranglerApp - Ido Git</title>
+    <title>Ido Dev - NoteWranglerApp</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
     <link rel="shortcut icon" href="Content/img/favicon.ico">
@@ -9,14 +9,14 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 </head>
-<body class="container-fluid">
+<body>
     <div class="nav-list">
-        <a href="#/notes"> Notes </a>
-        <a href="#/users"> Users </a>
+        <a class="btn" href="#/notes"> Notes </a>
+        <a class="btn" href="#/users"> Users </a>
     </div>
     
-    <div class="hero-wrapper"> some text in hero wrapper</div>
-    <div class="main-wrapper container-fluid">
+    <div class="hero"></div>
+    <div class="main-wrapper">
     
     <div ng-view></div>
     
@@ -34,6 +34,8 @@
     <script type="text/javascript" src="js/routes.js"></script>
     
         <!-- Controllers -->
+    <script type="text/javascript" src="js/controllers/notes-index-controller.js"></script>
+    <script type="text/javascript" src="js/controllers/notes-show-controller.js"></script>
 
 
     
