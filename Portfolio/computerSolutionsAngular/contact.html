@@ -4,24 +4,16 @@
   <h2>Contact</h2>
   <p>Please email support support@computerSolutions.com</p>
   <h3>Locations</h3>
-  <ul class="location">
-    <li>Downtown Location</li>
-    <li>3930 McKinney Ave</li>
-    <li>Dallas, TX 75204</li>
-    <li>(214) 444-2334</li>
-  </ul>
-  <ul class="location">
-    <li>Plano Location</li>
-    <li>3930 Plano Ave</li>
-    <li>Plano, TX 75204</li>
-    <li>(214) 444-2334</li>
-  </ul>
-  <ul class="location">
-    <li>Frisco Location</li>
-    <li>3930 Frisco Ave</li>
-    <li>Frisco, TX 75204</li>
-    <li>(214) 444-2334</li>
-  </ul>
+    <div ng-repeat="location in locations">
+      <ul class="location">
+        <li>{{location.name}}</li>
+        <li>{{location.street_address}}</li>
+        <li>{{location.city}}</li>
+        <li>{{location.state}}</li>
+        <li>{{location.zip}}</li>
+        <li>{{location.phone}}</li>
+      </ul>
+    </div>
   <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
 </div>
 </div>

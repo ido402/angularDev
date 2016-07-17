@@ -2,34 +2,16 @@
 <div class="row">
 <div class="col-lg-12">
   <h2>Services</h2>
-    <div class="row service">
-        <div class="col-md-2">
-             <img class="img-resposive" src="http://crashmasters.com/file/Computer-Repair-Muskegon-Crashmasters.jpg"/>
-        </div>
-        <div class="col-md-10">
-          <h3>Hardware Repair</h3>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-            <a href="contact.html" class="btn btn-primary">Contact Us</a>
-        </div>
-    </div>
-    <div class="row service">
-        <div class="col-md-2">
-             <img class="img-resposive" src="http://crashmasters.com/file/Computer-Repair-Muskegon-Crashmasters.jpg"/>
-        </div>
-        <div class="col-md-10">
-          <h3>Virus Removel</h3>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-            <a href="contact.html" class="btn btn-primary">Contact Us</a>
-        </div>
-    </div>
-    <div class="row service">
-        <div class="col-md-2">
-             <img class="img-resposive" src="http://crashmasters.com/file/Computer-Repair-Muskegon-Crashmasters.jpg"/>
-        </div>
-        <div class="col-md-10">
-          <h3>Computer Tuneup</h3>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-            <a href="contact.html" class="btn btn-primary">Contact Us</a>
+    <div ng-repeat="service in services">
+        <div class="row service">
+            <div class="col-md-2">
+                 <img class="img-resposive" ng-src="http://crashmasters.com/file/{{service.image}}"/>
+            </div>
+            <div class="col-md-10">
+              <h3>{{service.name}}</h3>
+              <p>{{service.description}}</p>
+                <a href="contact.html" class="btn btn-primary">Contact Us</a>
+            </div>
         </div>
     </div>
 </div>

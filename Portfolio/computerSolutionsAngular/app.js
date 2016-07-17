@@ -15,19 +15,31 @@ var app = angular.module("computerSolutions",['ngRoute'])
       })      
       .when('/services', {
         templateUrl: 'services.html',
-        controller: 'MainCtrl',
-        controllerAs: 'mainCtrl'
+        controller: 'ServicesCtrl',
+        controllerAs: 'servicesCtrl'
       })      
       .when('/contact', {
         templateUrl: 'contact.html',
-        controller: 'MainCtrl',
-        controllerAs: 'mainCtrl'
+        controller: 'ContactCtrl',
+        controllerAs: 'contactCtrl'
       })
       .otherwise({redirectTo:'/main'});
 
     }])
     
-    .controller('MainCtrl',['$scope',function($scope){
-      
-      console.log($scope);
+    .controller('ServicesCtrl',['$scope','$http',function($scope,$http){
+       $http.get('services.json').then(function(response){
+           $scope.services = response.data;
+       });
+    }]) 
+    .controller('ContactCtrl',['$scope','$http',function($scope,$http){
+       $http.get('locations.json').then(function(response){
+           $scope.locations = response.data;
+       });
+    }])
+ 
+    .controller('MainCtrl',['$scope','$http',function($scope,$http){
+       $http.get('services.json').then(function(response){
+           $scope.services = response.data;
+       });
     }]);
