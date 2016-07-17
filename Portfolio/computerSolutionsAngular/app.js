@@ -7,13 +7,27 @@ var app = angular.module("computerSolutions",['ngRoute'])
         templateUrl: 'main.html',
         controller: 'MainCtrl',
         controllerAs: 'mainCtrl'
-      });
-      
-      
-      
+      })      
+      .when('/about', {
+        templateUrl: 'about.html',
+        controller: 'MainCtrl',
+        controllerAs: 'mainCtrl'
+      })      
+      .when('/services', {
+        templateUrl: 'services.html',
+        controller: 'MainCtrl',
+        controllerAs: 'mainCtrl'
+      })      
+      .when('/contact', {
+        templateUrl: 'contact.html',
+        controller: 'MainCtrl',
+        controllerAs: 'mainCtrl'
+      })
+      .otherwise({redirectTo:'/main'});
+
     }])
     
-    .controller('MainCtrl',[function(){
+    .controller('MainCtrl',['$scope',function($scope){
       
-      console.log('this is the main controller');
+      console.log($scope);
     }]);
