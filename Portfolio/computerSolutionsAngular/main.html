@@ -1,0 +1,24 @@
+<!-- Jumbotron -->
+<div class="jumbotron">
+    <div class="row">
+        <div class="col-md-4">
+            <img class="img-resposive" src="http://crashmasters.com/file/Computer-Repair-Muskegon-Crashmasters.jpg"/>
+        </div>
+        <div class="col-md-8">
+          <h1>Computer Solutions</h1>
+          <p class="lead">We are computer solutions and we here to help you with your computer! If your computer running slow, you need a part to be repaired or your comupter needs a tuneup contact us, we are here to help.</p>
+        </div>
+
+  </div>
+</div>
+
+<!-- Example row of columns -->
+<div class="row">
+    <div ng-repeat="service in services">
+      <div class="col-lg-4">
+        <h2>{{service.name}}</h2>
+        <p>{{service.description}}</p>
+        <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
+      </div>
+    </div>
+</div>

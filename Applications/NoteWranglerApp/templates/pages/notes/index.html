@@ -1,0 +1,22 @@
+<h3 style="color:white">this is a simple notes page!!!!</h3>
+
+<div class="note-wrapper">
+    <a class="card-notes" ng-repeat="note in indexController.notes" ng-href='#/notes/{{note.id}}'>
+        
+        <div class="card" title='{{note.title}}'>
+        
+            <div ng-if='icon'>
+                <i class="icon icon-card {{note.icon}}"></i>
+            </div>
+        
+            <h2 class="h3"> {{note.title}}
+            </h2>
+            <div>
+                {{note.description}}
+            </div>
+        
+        </div>
+        
+        
+    </a>
+</div>

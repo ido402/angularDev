@@ -1,0 +1,15 @@
+[
+    {
+        "title": "Alunite",
+        "description": "Alunite is a hydrated aluminium potassium sulfate mineral",
+        "user":"Ido Doron",
+        "id":"1"
+    },
+    {
+        "title": "Bronzite",
+        "description": "Bronzite is a member of the pyroxene group of minerals",
+        "user": "Emily Doron",
+        "id":"2"
+        
+    }
+]
