@@ -1,0 +1,26 @@
+body {
+  padding-top: 50px;
+}
+.starter-template {
+  padding: 40px 15px;
+  text-align: center;
+}
+
+.list-of-items {
+    text-align: center;
+}
+
+.list-of-items img{
+    width: 70%;
+}
+
+.list-of-items a{
+    width: 50%;
+    text-align: center;
+    margin: auto;
+}
+
+.footer{
+  bottom: 0;
+  position: fixed;
+}
