@@ -16,5 +16,27 @@ angular.module('myContacts.contacts', ['ngRoute','firebase'])
 }])
 
 .controller('ContactsCtrl',['$scope','$firebaseArray',function($scope,$firebaseArray){
-    console.log($scope);
+    // Initialize Firebase
+    var firebaseConfig = {
+      apiKey: "AIzaSyCWCoPEqlroXldyjL1SOFB3MHUpNj56inc",
+      authDomain: "mycontacts-97c73.firebaseapp.com",
+      databaseURL: "https://mycontacts-97c73.firebaseio.com",
+      storageBucket: "mycontacts-97c73.appspot.com",
+    };
+    firebase.initializeApp(firebaseConfig);
+
+    var ref = firebase.database().ref();
+
+    $scope.contacts = $firebaseArray(ref);
+    console.log($scope.contacts);
+
+
+    $scope.showAddForm = function(){
+      $scope.addFormShow = true;
+    }
+    $scope.hideAddForm = function(){
+      $scope.addFormShow = false;
+    }
+
+
 }]);
