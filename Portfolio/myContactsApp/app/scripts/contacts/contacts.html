@@ -1,5 +1,6 @@
 <div>
-  <form class="form-horizontal" ng-show= "addFormShow">
+  <h3 data-alert ng-show= "alert-msg" class= "text-box">{{msg}}</h3>
+  <form class="form-horizontal" ng-submit= "addFormSubmit()" ng-show= "addFormShow">
   <fieldset>
     <h3>New Contact</h3>
     <div class="row">
