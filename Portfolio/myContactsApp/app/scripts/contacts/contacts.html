@@ -1,8 +1,115 @@
 <div>
   <h3 data-alert ng-show= "alert-msg" class= "text-box">{{msg}}</h3>
-  <form class="form-horizontal" ng-submit= "addFormSubmit()" ng-show= "addFormShow">
+
+  <!-- show contact area -->
+  <div class="row" ng-show= "contactShow">
+    <div class="alert alert-dismissible alert-info">
+      <h3>{{name}}</h3>
+      <ul>
+        <li><strong>Company</strong>: {{company}}</li>
+        <li><strong>Email Address</strong>: {{email}}</li>
+        <h4>Phone Numbers</h4>
+        <li><strong>Mobile Phone</strong>: {{mobile_phone}}</li>
+        <li><strong>Home Phone</strong>: {{home_phone}}</li>
+        <li><strong>Work Phone</strong>: {{work_phone}}</li>
+        <h4>Location Info</h4>
+        <li>{{street_address}}</li>
+        <li>{{city}}, {{state}} {{zip_code}}</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- add contact form -->
+    <form class="form-horizontal" ng-submit= "addFormSubmit()" ng-show= "addFormShow">
+    <fieldset>
+      <h3>New Contact</h3>
+      <div class="row">
+        <div class="form-group col-md-6">
+          <label class="col-md-2 control-label">Name</label>
+          <div class="col-md-10">
+            <input ng-model= "name" type="text" class="form-control" placeholder="Name">
+          </div>
+        </div>
+        <div class="form-group col-md-6">
+          <label class="col-md-2 control-label">Email</label>
+          <div class="col-md-10">
+            <input  ng-model= "email" type="email" class="form-control" placeholder="Email">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-md-6">
+          <label class="col-md-2 control-label">Company</label>
+          <div class="col-md-10">
+            <input ng-model= "company" type="text" class="form-control" placeholder="Company Name">
+          </div>
+        </div>
+        <div class="form-group col-md-6">
+          <label class="col-md-2 control-label">Work Phone</label>
+          <div class="col-md-10">
+            <input  ng-model= "work_phone" type="text" class="form-control" placeholder="Work Phone">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-md-6">
+          <label class="col-md-2 control-label">Mobile Phone</label>
+          <div class="col-md-10">
+            <input ng-model= "mobile_phone" type="text" class="form-control" placeholder="Mobile Phone">
+          </div>
+        </div>
+        <div class="form-group col-md-6">
+          <label class="col-md-2 control-label">Home Phone</label>
+          <div class="col-md-10">
+            <input  ng-model= "home_phone" type="text" class="form-control" placeholder="Home Phone">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-md-6">
+          <label class="col-md-2 control-label">Street Address</label>
+          <div class="col-md-10">
+            <input ng-model= "street_address" type="text" class="form-control" placeholder="Street Address">
+          </div>
+        </div>
+        <div class="form-group col-md-6">
+          <label class="col-md-2 control-label">City</label>
+          <div class="col-md-10">
+            <input  ng-model= "city" type="text" class="form-control" placeholder="City">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-md-6">
+          <label class="col-md-2 control-label">State</label>
+          <div class="col-md-10">
+            <input ng-model= "state" type="text" class="form-control" placeholder="State">
+          </div>
+        </div>
+        <div class="form-group col-md-6">
+          <label class="col-md-2 control-label">Zip Code</label>
+          <div class="col-md-10">
+            <input  ng-model= "zip_code" type="text" class="form-control" placeholder="Zip Code">
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row col-md-12">
+        <div class="form-group">
+          <div class="col-md-10 col-md-offset-2">
+            <button type="reset" class="btn btn-default" ng-click= "hideAddForm()">Cancel</button>
+            <button type="submit" value="Add Contact" class="btn btn-primary">Add Contact</button>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+  <!-- Edit contact form -->
+  <form class="form-horizontal" ng-submit= "editFormSubmit()" ng-show= "editFormShow">
   <fieldset>
-    <h3>New Contact</h3>
+    <h3>Edit Contact</h3>
     <div class="row">
       <div class="form-group col-md-6">
         <label class="col-md-2 control-label">Name</label>
@@ -79,7 +186,7 @@
       <div class="form-group">
         <div class="col-md-10 col-md-offset-2">
           <button type="reset" class="btn btn-default" ng-click= "hideAddForm()">Cancel</button>
-          <button type="submit" value="Add Contact" class="btn btn-primary">Add Contact</button>
+          <button type="submit" value="Update Contact" class="btn btn-primary">Update Contact</button>
         </div>
       </div>
     </div>
@@ -99,7 +206,7 @@
       </thead>
       <tbody>
         <tr ng-repeat = "contact in contacts">
-          <td><a href="#">{{contact.name}}</a></td>
+          <td><a ng-click= "showContact(contact)">{{contact.name}}</a></td>
           <td>{{contact.company}}</td>
           <td>{{contact.email}}</td>
           <td>
@@ -111,6 +218,7 @@
     </table>
   </div>
   <div class="col-sm-12 col-lg-2">
-  <a class="btn btn-primary" ng-click= "showAddForm()">+</a>
+    <a class="btn btn-primary" ng-click= "showAddForm()">+</a>
+    <a class="btn btn-primary" ng-click= "hideAddForm()" ng-show= "contactShow">-</a>
   </div>
 </div>
