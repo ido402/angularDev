@@ -56,7 +56,45 @@ angular.module('myContacts.contacts', ['ngRoute','firebase'])
       $scope.contactShow = false;
     }
 
+    $scope.editFormSubmit = function(){
+      console.log('Updating Contact...');
 
+      debugger;
+      var list = $firebaseArray(ref);
+      var records = $scope.contacts;
+
+      var index = records.findIndex(x => x.email == $scope.email);
+
+      //get key for the record based on it's index
+      var key = records[index].$id;
+      //get the record from the server
+      var record = records.$getRecord(key);
+
+      //Assign values
+      record.name =$scope.name;
+      record.company = $scope.company;
+      record.email = $scope.email;
+      record.phones[0].work = $scope.work_phone;
+      record.phones[0].mobile = $scope.mobile_phone;
+      record.phones[0].home = $scope.home_phone;
+      record.address[0].street_address = $scope.street_address;
+      record.address[0].city = $scope.city;
+      record.address[0].state = $scope.state;
+      record.address[0].zipcode = $scope.zipcode;
+
+      //Save contact to server
+      $scope.contacts.$save(record).then(function(ref){
+        console.log(ref.key);
+      });
+
+      //clearing for
+      clearFields();
+
+      //hide form after submission
+      $scope.addFormShow = false;
+
+
+    }
 
 
     //Form submition function
@@ -74,10 +112,9 @@ angular.module('myContacts.contacts', ['ngRoute','firebase'])
       if($scope.city) { var city = $scope.city;} else { var city="";}
       if($scope.state) { var state = $scope.state;} else { var state="";}
       if($scope.zip_code) { var zip_code = $scope.zip_code;} else { var zip_code="";}
-      debugger;
+
       //build object in JSON format
       $scope.contacts.$add({
-        contact_id: ref.key,
         name: name,
         email: email,
         company: company,
@@ -94,17 +131,15 @@ angular.module('myContacts.contacts', ['ngRoute','firebase'])
         }]
       }).then(function(ref){
         debugger;
-        var id2 = ref.push().key;
+        //var id2 = ref.push().key;
         var id = ref.key;
         console.log('Added a contact with ID:' +id);
-         $scope.contacts.$indexFor(id);
 
         //clearing for
         clearFields();
 
         //hide form after submission
         $scope.addFormShow = false;
-
         $scope.msg = "Contact was Added to the Database";
 
       });
@@ -112,26 +147,7 @@ angular.module('myContacts.contacts', ['ngRoute','firebase'])
 
     }
 
-    $scope.editFormSubmit = function(){
-      console.log('Updating Contact...');
 
-      debugger;
-
-      //get Id from Server
-
-      var id = $scope.id;
-
-      //get record
-      var record;
-
-      $scope.contacts.$loaded().then(function() {
-         // Broadcast your post and catch up at any controller
-          record = $scope.contacts.$getRecord(id);
-      });
-
-
-
-    }
 
 
     //show contact function
