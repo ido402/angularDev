@@ -30,11 +30,11 @@ angular.module('myContacts.contacts', ['ngRoute','firebase'])
     $scope.contacts = $firebaseArray(ref);
     console.log($scope.contacts);
 
-    //Show form function
+    //Show form function for addition mode
     $scope.showAddForm = function(){
       $scope.addFormShow = true;
     }
-    //Show form function
+    //Show form for editing mode
     $scope.showEditForm = function(contact){
       $scope.editFormShow = true;
 
@@ -48,6 +48,7 @@ angular.module('myContacts.contacts', ['ngRoute','firebase'])
       $scope.city = contact.address[0].city;
       $scope.state = contact.address[0].state;
       $scope.zipcode = contact.address[0].zipcode;
+      $scope.recordid = contact.recordid;
 
     }
     //hide from function
@@ -56,14 +57,17 @@ angular.module('myContacts.contacts', ['ngRoute','firebase'])
       $scope.contactShow = false;
     }
 
+    $scope.hideEditForm = function(){
+      $scope.editFormShow = false;
+    }
+
     $scope.editFormSubmit = function(){
       console.log('Updating Contact...');
 
-      debugger;
       var list = $firebaseArray(ref);
       var records = $scope.contacts;
 
-      var index = records.findIndex(x => x.email == $scope.email);
+      var index = records.findIndex(x => x.recordid == $scope.recordid);
 
       //get key for the record based on it's index
       var key = records[index].$id;
@@ -91,15 +95,16 @@ angular.module('myContacts.contacts', ['ngRoute','firebase'])
       clearFields();
 
       //hide form after submission
-      $scope.addFormShow = false;
+      $scope.editFormShow = false;
 
 
     }
 
-
     //Form submition function
     $scope.addFormSubmit = function(){
       console.log('Adding contact');
+
+      var timestampAsId = new Date().getUTCMilliseconds();
 
       //Assign values to create new contact.
       if($scope.name) { var name = $scope.name;} else { var name="";}
@@ -115,6 +120,7 @@ angular.module('myContacts.contacts', ['ngRoute','firebase'])
 
       //build object in JSON format
       $scope.contacts.$add({
+        recordid:timestampAsId,
         name: name,
         email: email,
         company: company,
@@ -130,8 +136,6 @@ angular.module('myContacts.contacts', ['ngRoute','firebase'])
           zipcode: zip_code
         }]
       }).then(function(ref){
-        debugger;
-        //var id2 = ref.push().key;
         var id = ref.key;
         console.log('Added a contact with ID:' +id);
 
@@ -148,9 +152,7 @@ angular.module('myContacts.contacts', ['ngRoute','firebase'])
     }
 
 
-
-
-    //show contact function
+    //show contact information
     $scope.showContact = function(contact){
       console.log("Showing contact...");
 
@@ -164,9 +166,17 @@ angular.module('myContacts.contacts', ['ngRoute','firebase'])
       $scope.city = contact.address[0].city;
       $scope.state = contact.address[0].state;
       $scope.zipcode = contact.address[0].zipcode;
-
+      $scope.recordid = contact.recordid;
 
       $scope.contactShow = true;
+    }
+
+    //show contact function
+    $scope.removeContact = function(contact){
+      console.log("Removing contact...");
+
+      $scope.contacts.$remove(contact);
+      $scope.msg = "Contact Remove";
     }
 
 

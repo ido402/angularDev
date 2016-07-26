@@ -24,6 +24,12 @@
     <fieldset>
       <h3>New Contact</h3>
       <div class="row">
+        <div class="form-group col-md-6" ng-hide= "true" class="ng-hide">
+          <label class="col-md-2 control-label">RecordID</label>
+          <div class="col-md-10">
+            <input ng-model= "recordid" type="text" class="form-control" placeholder="recordid">
+          </div>
+        </div>
         <div class="form-group col-md-6">
           <label class="col-md-2 control-label">Name</label>
           <div class="col-md-10">
@@ -111,6 +117,12 @@
   <fieldset>
     <h3>Edit Contact</h3>
     <div class="row">
+      <div class="form-group col-md-6" ng-hide= "true" class="ng-hide">
+        <label class="col-md-2 control-label">RecordID</label>
+        <div class="col-md-10">
+          <input ng-model= "recordid" type="text" class="form-control" placeholder="recordid">
+        </div>
+      </div>
       <div class="form-group col-md-6">
         <label class="col-md-2 control-label">Name</label>
         <div class="col-md-10">
@@ -185,7 +197,7 @@
     <div class="row col-md-12">
       <div class="form-group">
         <div class="col-md-10 col-md-offset-2">
-          <button type="reset" class="btn btn-default" ng-click= "hideAddForm()">Cancel</button>
+          <button type="reset" class="btn btn-default" ng-click= "hideEditForm()">Cancel</button>
           <button type="submit" value="Update Contact" class="btn btn-primary">Update Contact</button>
         </div>
       </div>
@@ -194,7 +206,7 @@
 </form>
 
   <div class="col-md-10">
-    <h3>Your Contacts (3)</h3>
+    <h3>Your Contacts ({{contacts.length}})</h3>
      <table class="table table-striped table-hover" >
       <thead>
         <tr>
@@ -211,7 +223,7 @@
           <td>{{contact.email}}</td>
           <td>
             <a class="btn btn-success btn-sm" ng-click= "showEditForm(contact)">Edit</a>
-            <a class="btn btn-danger btn-sm" ng-click= "deleteContact(contact)">Delete</a>
+            <a class="btn btn-danger btn-sm" ng-click= "removeContact(contact)">Delete</a>
           </td>
         </tr>
       </tbody>
