@@ -3,26 +3,16 @@
 // Declare app level module which depends on views, and components
 angular.module('myContacts.contacts', ['ngRoute','firebase'])
 
-.config(['$routeProvider', function($routeProvider) {
-
-  $routeProvider
-  .when('/contacts',{
-    templateUrl:'scripts/contacts/contacts.html',
-    controller: 'ContactsCtrl',
-    controllerAs: 'contactsCtrl'
-  })
-  .otherwise({redirectTo: '/contacts'});
-
-}])
 //Contacts Controller
 .controller('ContactsCtrl',['$scope','$firebaseArray',function($scope,$firebaseArray){
-    // Initialize Firebase
+  // Initialize Firebase
     var firebaseConfig = {
       apiKey: "AIzaSyCWCoPEqlroXldyjL1SOFB3MHUpNj56inc",
       authDomain: "mycontacts-97c73.firebaseapp.com",
       databaseURL: "https://mycontacts-97c73.firebaseio.com",
       storageBucket: "mycontacts-97c73.appspot.com",
     };
+
     firebase.initializeApp(firebaseConfig);
 
     var ref = firebase.database().ref();
@@ -33,6 +23,7 @@ angular.module('myContacts.contacts', ['ngRoute','firebase'])
     //Show form function for addition mode
     $scope.showAddForm = function(){
       $scope.addFormShow = true;
+      //thisi is a test
     }
     //Show form for editing mode
     $scope.showEditForm = function(contact){
@@ -59,12 +50,13 @@ angular.module('myContacts.contacts', ['ngRoute','firebase'])
 
     $scope.hideEditForm = function(){
       $scope.editFormShow = false;
+       //thisi is a test
     }
 
     $scope.editFormSubmit = function(){
       console.log('Updating Contact...');
 
-      var list = $firebaseArray(ref);
+      //var list = $firebaseArray(ref);
       var records = $scope.contacts;
 
       var index = records.findIndex(x => x.recordid == $scope.recordid);
@@ -88,7 +80,7 @@ angular.module('myContacts.contacts', ['ngRoute','firebase'])
 
       //Save contact to server
       $scope.contacts.$save(record).then(function(ref){
-        console.log(ref.key);
+        //console.log(ref.key);
       });
 
       //clearing for
@@ -96,8 +88,6 @@ angular.module('myContacts.contacts', ['ngRoute','firebase'])
 
       //hide form after submission
       $scope.editFormShow = false;
-
-
     }
 
     //Form submition function
@@ -147,8 +137,6 @@ angular.module('myContacts.contacts', ['ngRoute','firebase'])
         $scope.msg = "Contact was Added to the Database";
 
       });
-
-
     }
 
 
@@ -195,6 +183,5 @@ angular.module('myContacts.contacts', ['ngRoute','firebase'])
       $scope.zip_code = '';
     }
 
-
-
 }]);
+  
